@@ -1,0 +1,69 @@
+service: serverless-python-example
+app: serverless-python-example
+org: order-of-devs
+
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-python-requirements
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, "dev"}
+  region: ${opt:region, "us-east-1"}
+  httpApi:
+    cors: true
+
+package:
+  individually: true
+  exclude:
+    - Makefile
+    - Dockerfile*
+    - "*.md"
+    - .dockerignore
+    - .github/**
+    - tests/**
+    - node_modules/**
+    - .venv/**
+    - config.yml
+    - sample-config.yml
+    - migrations
+    - terraform
+    - requirements.txt
+    - pyproject.toml
+    - poetry.lock
+    - generator-config.yml
+    - cli.py
+    - alembic.ini
+    - .pre-commit-config.yaml
+    - .gitignore
+    - .coverage
+    - .mypy_cache/**
+    - .pytest_cache/**
+    - mypy.ini
+    - package-lock.json
+    - package.json
+
+functions:
+  api:
+    handler: handler.hello
+    timeout: 28
+    events:
+      - httpApi:
+          path: /{path+}
+          method: GET
+      - httpApi:
+          path: /{path+}
+          method: POST
+      - httpApi:
+          path: /{path+}
+          method: PATCH
+      - httpApi:
+          path: /{path+}
+          method: PUT
+      - httpApi:
+          path: /{path+}
+          method: DELETE

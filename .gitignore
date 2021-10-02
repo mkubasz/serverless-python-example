@@ -1,0 +1,31 @@
+# Dependency directories
+node_modules/
+
+# Build directory
+.build
+
+### Serverless ###
+# Serverless directories
+.serverless/
+# Ignore build directory
+.serverless
+
+# dotenv environment variables files
+.env
+.env*
+
+# Optional npm cache directory
+.npm
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# directories used by IDEs
+.idea
+.project
+.settings
+.vscode
+.npmbin
+

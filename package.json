@@ -1,0 +1,21 @@
+{
+  "name": "serverless-python-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "author": "Mateusz Kubaszek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkubasz/serverless-python-example/issues"
+  },
+  "homepage": "https://github.com/mkubasz/serverless-python-example#readme",
+  "scripts": {
+    "build:doc": "npx redoc-cli bundle -o api/openapi.html api/openapi.yaml"
+  },
+  "devDependencies": {
+    "redoc-cli": "0.12.3"
+  }
+}

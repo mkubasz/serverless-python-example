@@ -1,0 +1,9 @@
+[tool.poetry]
+name = "serverless python by example"
+version = "1.0.0"
+description = "Serverless Python by example"
+authors = [ "Mateusz Kubaszek" ]
+readme = "README.md"
+packages = [
+  {inclued = "serverless-python-example"}
+]

@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: Serverless python by example
+  version: 1.0.0
+
+components:
+  schemas:
+    ServerError:
+      type: object
+      properties:
+        code:
+          type: number
+          description: HTTP status code of the error
+          example: 500
+        errors:
+          typ: array
+          items:
+            type: string
+            description: Error message
+            example: Internal server error
+
+  responses:
+    ServerErrorResponse:
+      description: A server error object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ServerError'
+paths:
+  /ping:
+    get:
+      summary: ping
+      description: The endpoint to test api.
+      responses:
+        '200':
+          description: pong
