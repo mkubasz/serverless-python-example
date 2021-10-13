@@ -4,6 +4,11 @@ version = "1.0.0"
 description = "Serverless Python by example"
 authors = [ "Mateusz Kubaszek" ]
 readme = "README.md"
-packages = [
-  {inclued = "serverless-python-example"}
-]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+mangum = "0.12.3"
+fastapi = "0.70"
+
+[tool.poetry.dev-dependencies]
+uvicorn = "0.15"

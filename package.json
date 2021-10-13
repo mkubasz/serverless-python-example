@@ -16,6 +16,10 @@
     "build:doc": "npx redoc-cli bundle -o api/openapi.html api/openapi.yaml"
   },
   "devDependencies": {
-    "redoc-cli": "0.12.3"
+    "redoc-cli": "0.12.3",
+    "serverless-python-requirements": "^5.1.1"
+  },
+  "dependencies": {
+    "serverless": "^2.62.0"
   }
 }

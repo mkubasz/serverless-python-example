@@ -1,21 +1,7 @@
 service: serverless-python-example
 app: serverless-python-example
-org: order-of-devs
-
 
 frameworkVersion: '2'
-
-plugins:
-  - serverless-python-requirements
-
-provider:
-  name: aws
-  runtime: python3.8
-  lambdaHashingVersion: 20201221
-  stage: ${opt:stage, "dev"}
-  region: ${opt:region, "us-east-1"}
-  httpApi:
-    cors: true
 
 package:
   individually: true
@@ -46,24 +32,33 @@ package:
     - mypy.ini
     - package-lock.json
     - package.json
+    - lambda/**
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, "dev"}
+  region: ${opt:region, "eu-central-1"}
+  httpApi:
+    cors: true
+
+custom:
+  pythonRequirements:
+    pythonBin: python3
+    dockerizePip: false
+    usePoetry: true
+    slim: true
 
 functions:
   api:
-    handler: handler.hello
+    handler: src.handlers.handler.api
     timeout: 28
     events:
       - httpApi:
           path: /{path+}
           method: GET
-      - httpApi:
-          path: /{path+}
-          method: POST
-      - httpApi:
-          path: /{path+}
-          method: PATCH
-      - httpApi:
-          path: /{path+}
-          method: PUT
-      - httpApi:
-          path: /{path+}
-          method: DELETE
+
+plugins:
+  - serverless-python-requirements
+
