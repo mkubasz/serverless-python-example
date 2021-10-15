@@ -3,7 +3,7 @@ from mangum import Mangum
 
 app = FastAPI()
 
- 
+
 @app.get('/')
 def pong():
     return {'Ping': 'pong'}
