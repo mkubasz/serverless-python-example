@@ -8,4 +8,5 @@ app = FastAPI()
 def pong():
     return {'Ping': 'pong'}
 
+
 api = Mangum(app)
