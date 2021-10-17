@@ -12,3 +12,6 @@ fastapi = "0.70"
 
 [tool.poetry.dev-dependencies]
 uvicorn = "0.15"
+awscli-local = "0.16"
+pytest = "^6.2.5"
+requests = "^2.26.0"

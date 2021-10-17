@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 from mangum import Mangum
 
-app = FastAPI()
+
+app = FastAPI(title="FastAPI")
 
  
-@app.get('/')
+@app.get('/ping')
 def pong():
-    return {'Ping': 'pong'}
+    return {'result': 'pong'}
 
 
 api = Mangum(app)

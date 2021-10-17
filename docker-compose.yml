@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   localstack:
-    image: localstack/localstack
+    image: localstack/localstack:latest
     ports: 
       - "53:53"
       - "53:53/udp"
@@ -11,17 +11,15 @@ services:
       - "4576:4576"
       - "4571:4571"
       - "8001:8001"
-    volumes:
-      - type: volume
-        source: /var/run/docker.sock
-        target: /var/run/docker.sock
     environment:
-      SERVICES: cloudformation,kms,lambda,iam,s3,sqs
       HOSTNAME: localstack
       DEFAULT_REGION: eu-central-1
       AWS_ACCESS_KEY_ID: local_key
       AWS_SECRET_ACCESS_KEY: local_key
       DATA_DIR: /tmp/localstack/data
-
-volumes:
-    localstack_data:
+      EDGE_PORT: 4566
+      DEBUG: 1
+      SERVICES: apigateway,cloudformation,cloudwatch,cloudwatchevents,dynamodb,ec2,es,firehose,iam,kinesis,lambda,route53,redshift,s3,secretsmanager,ses,sns,sqs,ssm,stepfunctions,sts,ecr
+    volumes:
+      - "${TEMPDIR:-/tmp/localstack}:/temp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

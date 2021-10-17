@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "redoc-cli": "0.12.3",
+    "serverless-localstack": "^0.4.35",
     "serverless-python-requirements": "^5.1.1"
   },
   "dependencies": {

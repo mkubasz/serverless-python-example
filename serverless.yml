@@ -43,22 +43,31 @@ provider:
   httpApi:
     cors: true
 
+
 custom:
   pythonRequirements:
     pythonBin: python3
     dockerizePip: false
     usePoetry: true
     slim: true
+  localstack:
+    debug: true
+    stages:
+      - local
+      - dev
+    endpointFile: localstack_endpoints.json
 
 functions:
   api:
     handler: src.handlers.handler.api
     timeout: 28
     events:
-      - httpApi:
-          path: /{path+}
-          method: GET
-
+      - http:
+          method: any
+          path: /{proxy+}
+      - http:
+          method: get
+          path: /
 plugins:
   - serverless-python-requirements
-
+  - serverless-localstack
