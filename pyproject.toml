@@ -12,3 +12,45 @@ fastapi = "0.70"
 
 [tool.poetry.dev-dependencies]
 uvicorn = "0.15"
+flake8 = "^4.0.1"
+pep8-naming = "^0.12.1"
+isort = "^5.9.3"
+black = "^21.9b0"
+safety = "^1.10.3"
+bandit = "^1.7.0"
+pre-commit = "^2.15.0"
+mypy = "^0.910"
+pytest = "^6.2.5"
+
+
+[tool.isort]
+profile = "black"
+force_single_line = true
+atomic = true
+include_trailing_comma = true
+lines_after_imports = 2
+lines_between_types = 1
+use_parentheses = true
+src_paths = ["poetry", "tests"]
+skip_glob = ["*/setup.py"]
+filter_files = true
+known_first_party = "poetry"
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | tests/.*/setup.py
+)/
+'''
